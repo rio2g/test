@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Brasil</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <script src="../js/script.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Feedback Brasil</h1>
+        <nav>
+            <ul>
+                <li><a href="#depoimentos">Depoimentos</a></li>
+                <li><a href="#deixar-feedback">Deixar Feedback</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="depoimentos">
+            <h2>Depoimentos Recentes</h2>
+            <div id="feedback-list">
+                {% for feedback in feedbacks %}
+                    <div>
+                        <strong>{{ feedback['nome'] }}</strong>
+                        <p>{{ feedback['mensagem'] }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+            <img src="../images/depoimento_exemplo.jpg" alt="Exemplo de Depoimento">
+        </section>
+        <section id="deixar-feedback">
+            <h2>Deixe seu Feedback</h2>
+            <form id="feedback-form" action="/feedback" method="POST">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" required>
+
+                <label for="mensagem">Mensagem:</label>
+                <textarea id="mensagem" name="mensagem" required></textarea>
+
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Feedback Brasil</p>
+    </footer>
+</body>
+</html>
